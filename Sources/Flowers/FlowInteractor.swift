@@ -11,6 +11,6 @@ public protocol FlowInteractor<Action, Effect> {
     
     func apply(
         effect: Effect,
-        dispatch: (Action) -> Void
+        dispatch: @escaping (Action) -> Void
     ) async
 }
