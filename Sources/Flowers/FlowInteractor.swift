@@ -9,5 +9,8 @@ public protocol FlowInteractor<Action, Effect> {
     associatedtype Action: FlowAction
     associatedtype Effect: FlowEffect
     
-    func apply(effect: Effect) async -> Action?
+    func apply(
+        effect: Effect,
+        dispatch: (Action) -> Void
+    ) async
 }

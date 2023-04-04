@@ -53,11 +53,13 @@ public final class FlowStoreImpl<
                 return
             }
             
-            let action = await interactor.apply(effect: effect)
-            
-            if let action {
-                dispatch(action: action)
-            }
+            await interactor.apply(
+                effect: effect,
+                dispatch: { [weak self] action in
+                    guard let self = self else { return }
+                    self.dispatch(action: action)
+                }
+            )
         }
     }
 }
