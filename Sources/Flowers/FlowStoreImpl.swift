@@ -39,7 +39,7 @@ public final class FlowStoreImpl<
         self.stateChanged = stateChanged
     }
     
-    // MARK: - Dispatch
+    /// Основная функции, описывающая поток данных
     public func dispatch(action: Action) {
         let (state, effect) = reducer.reduce(
             action: action,
