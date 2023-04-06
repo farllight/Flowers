@@ -17,7 +17,7 @@ public enum Flow {
         initialViewModel: ViewModel,
         reducer: any FlowReducer<Action, State, Effect>,
         interactor: any FlowInteractor<Action, Effect>,
-        coordinate: @escaping (Event) -> Action,
+        coordinate: @escaping (Event) -> Action?,
         map: @escaping (State, inout ViewModel) -> Void
     ) -> FlowCoordinator<Action, State, Event> {
         let mapper = FlowMapper(

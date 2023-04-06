@@ -14,7 +14,7 @@ public final class FlowCoordinator<Action: FlowAction, State: FlowState, Event: 
     
     init(
         store: any FlowStore<Action, State>,
-        coordinate: @escaping (Event) -> Action
+        coordinate: @escaping (Event) -> Action?
     ) {
         self.store = store
         self.coordinate = coordinate
