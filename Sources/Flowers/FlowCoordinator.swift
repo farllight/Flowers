@@ -10,7 +10,7 @@ public final class FlowCoordinator<Action: FlowAction, State: FlowState, Event: 
     private let store: any FlowStore<Action, State>
     
     /// Чистая функция для преобразования UI-события в бизнес-событие
-    private let coordinate: (Event) -> Action
+    private let coordinate: (Event) -> Action?
     
     init(
         store: any FlowStore<Action, State>,
@@ -21,7 +21,7 @@ public final class FlowCoordinator<Action: FlowAction, State: FlowState, Event: 
     }
     
     public func onEvent(event: Event) {
-        let action = coordinate(event)
+        guard let action = coordinate(event) else { return }
         store.dispatch(action: action)
     }
 }
